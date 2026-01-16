@@ -10,11 +10,10 @@ import { Alert } from '@/components/ui/alert';
 import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';
 import { Loading } from '@/components/ui/loading';
 import Image from 'next/image';
-// import { useAuth } from '@/context/AuthContext';
-
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
-  // const { user, signIn, signUp, loading } = useAuth();
+  const { user, signIn, signUp, loading } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,77 +22,77 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  // useEffect(() => {
-  //   if (user && !loading) {
-  //     router.push('/dashboard');
-  //   }
-  // }, [user, loading, router]);
+  useEffect(() => {
+    if (user && !loading) {
+      router.push('/dashboard');
+    }
+  }, [user, loading, router]);
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setError('');
-  //   setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
 
-  //   try {
-  //     // Validação básica
-  //     if (!email || !password) {
-  //       setError('Por favor, preencha todos os campos');
-  //       setIsSubmitting(false);
-  //       return;
-  //     }
+    try {
+      // Validação básica
+      if (!email || !password) {
+        setError('Por favor, preencha todos os campos');
+        setIsSubmitting(false);
+        return;
+      }
 
-  //     if (!email.includes('@')) {
-  //       setError('Por favor, insira um email válido');
-  //       setIsSubmitting(false);
-  //       return;
-  //     }
+      if (!email.includes('@')) {
+        setError('Por favor, insira um email válido');
+        setIsSubmitting(false);
+        return;
+      }
 
-  //     if (password.length < 6) {
-  //       setError('A senha deve ter pelo menos 6 caracteres');
-  //       setIsSubmitting(false);
-  //       return;
-  //     }
+      if (password.length < 6) {
+        setError('A senha deve ter pelo menos 6 caracteres');
+        setIsSubmitting(false);
+        return;
+      }
 
-  //     if (isSignUp) {
-  //       await signUp(email, password, name);
-  //     } else {
-  //       await signIn(email, password);
-  //     }
-  //     // Se chegou aqui, foi bem-sucedido
-  //     // O redirecionamento será feito pelo useEffect
-  //   } catch (error: any) {
-  //     console.error('Erro:', error);
+      if (isSignUp) {
+        await signUp(email, password, name);
+      } else {
+        await signIn(email, password);
+      }
+      // Se chegou aqui, foi bem-sucedido
+      // O redirecionamento será feito pelo useEffect
+    } catch (error: any) {
+      console.error('Erro:', error);
       
-  //     // Mensagens de erro mais amigáveis
-  //     if (error?.message?.includes('Invalid login credentials')) {
-  //       setError('Email ou senha incorretos');
-  //     } else if (error?.message?.includes('Email not confirmed')) {
-  //       setError('Por favor, confirme seu email antes de fazer login');
-  //     } else if (error?.message?.includes('User already registered')) {
-  //       setError('Este email já está cadastrado. Faça login.');
-  //     } else {
-  //       setError(isSignUp ? 'Erro ao criar conta. Tente novamente.' : 'Erro ao fazer login. Tente novamente.');
-  //     }
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
+      // Mensagens de erro mais amigáveis
+      if (error?.message?.includes('Invalid login credentials')) {
+        setError('Email ou senha incorretos');
+      } else if (error?.message?.includes('Email not confirmed')) {
+        setError('Por favor, confirme seu email antes de fazer login');
+      } else if (error?.message?.includes('User already registered')) {
+        setError('Este email já está cadastrado. Faça login.');
+      } else {
+        setError(isSignUp ? 'Erro ao criar conta. Tente novamente.' : 'Erro ao fazer login. Tente novamente.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-  // if (loading) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center bg-slate-50">
-  //       <Loading size="lg" />
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <Loading size="lg" />
+      </div>
+    );
+  }
 
-  // if (user) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center bg-slate-50">
-  //       <Loading size="lg" />
-  //     </div>
-  //   );
-  // }
+  if (user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <Loading size="lg" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-orange-50 p-4">
@@ -119,7 +118,7 @@ export default function LoginPage() {
             </Alert>
           )}
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">  
             {isSignUp && (
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm font-medium">
