@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from '../theme-toggle';
+import { ThemeToggle } from '../ui/theme-toggle';
 
 interface MenuItem {
   text: string;
