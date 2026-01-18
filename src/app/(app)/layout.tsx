@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loading } from '@/components/ui/loading';
-import MainLayout from '@/components/ui/layout/MainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import { useAuth } from '@/context/AuthContext';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
