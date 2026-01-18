@@ -1,10 +1,19 @@
-import { Button } from "@/components/ui/button";
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Loading } from '@/components/ui/loading';
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/dashboard');
+  }, [router]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1>Hello World</h1>
-      <Button/>
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <Loading size="lg" />
     </div>
   );
 }
