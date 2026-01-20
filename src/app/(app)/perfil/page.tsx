@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-// import { useAuth } from '@/context/AuthContext';
-// import { createClient } from '@/lib/supabase/client';
+import { useAuth } from '@/context/AuthContext';
+import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -13,7 +13,7 @@ import { User, TrendingUp, Shield, Zap, CheckCircle2, Info } from 'lucide-react'
 import { cn } from '@/lib/utils';
 import { PageHeader } from '@/components/ui/page-header';
 
-// const supabaseClient = createClient();
+const supabaseClient = createClient();
 
 interface Question {
   id: number;
@@ -113,7 +113,7 @@ const profileInfo = {
 };
 
 export default function PerfilPage() {
-  // const { user, refreshUser } = useAuth();
+  const { user, refreshUser } = useAuth();
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -121,12 +121,12 @@ export default function PerfilPage() {
   const [saving, setSaving] = useState(false);
   const [hasProfile, setHasProfile] = useState(false);
 
-  // useEffect(() => {
-  //   if (user?.riskProfile) {
-  //     setHasProfile(true);
-  //     setResult(user.riskProfile as any);
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (user?.riskProfile) {
+      setHasProfile(true);
+      setResult(user.riskProfile as any);
+    }
+  }, [user]);
 
   const handleAnswer = async (score: number) => {
     const newAnswers = [...answers, score];
@@ -136,90 +136,90 @@ export default function PerfilPage() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       // Última pergunta - calcula e salva automaticamente
-      // await calculateAndSaveResult(newAnswers);
+       await calculateAndSaveResult(newAnswers);
     }
   };
 
-  // const calculateAndSaveResult = async (finalAnswers: number[]) => {
-  //   const total = finalAnswers.reduce((sum, score) => sum + score, 0);
-  //   const average = total / finalAnswers.length;
+   const calculateAndSaveResult = async (finalAnswers: number[]) => {
+     const total = finalAnswers.reduce((sum, score) => sum + score, 0);
+     const average = total / finalAnswers.length;
 
-  //   let profile: 'conservador' | 'moderado' | 'arrojado';
-  //   if (average <= 1.5) {
-  //     profile = 'conservador';
-  //   } else if (average <= 2.5) {
-  //     profile = 'moderado';
-  //   } else {
-  //     profile = 'arrojado';
-  //   }
+     let profile: 'conservador' | 'moderado' | 'arrojado';
+     if (average <= 1.5) {
+       profile = 'conservador';
+     } else if (average <= 2.5) {
+       profile = 'moderado';
+     } else {
+       profile = 'arrojado';
+     }
 
-  //   // Salvar automaticamente no banco
-  //   if (!user) {
-  //     console.error('Usuário não está logado');
-  //     alert('Você precisa estar logado para salvar o perfil.');
-  //     return;
-  //   }
+  //    Salvar automaticamente no banco
+     if (!user) {
+       console.error('Usuário não está logado');
+       alert('Você precisa estar logado para salvar o perfil.');
+       return;
+     }
 
-  //   setSaving(true);
+     setSaving(true);
     
-  //   try {
-  //     // Verifica se o usuário existe
-  //     const { data: existingUser, error: checkError } = await supabaseClient
-  //       .from('users')
-  //       .select('id, risk_profile')
-  //       .eq('id', user.uid)
-  //       .single();
+     try {
+  //      Verifica se o usuário existe
+       const { data: existingUser, error: checkError } = await supabaseClient
+         .from('users')
+         .select('id, risk_profile')
+         .eq('id', user.uid)
+         .single();
 
-  //     if (checkError) {
-  //       console.error('Erro ao verificar usuário:', checkError);
-  //       throw new Error('Usuário não encontrado no banco de dados');
-  //     }
+       if (checkError) {
+         console.error('Erro ao verificar usuário:', checkError);
+         throw new Error('Usuário não encontrado no banco de dados');
+       }
 
-  //     // Atualiza o perfil
-  //     const { data: updatedData, error: updateError } = await supabaseClient
-  //       .from('users')
-  //       .update({ 
-  //         risk_profile: profile,
-  //         updated_at: new Date().toISOString()
-  //       })
-  //       .eq('id', user.uid)
-  //       .select();
+  //      Atualiza o perfil
+       const { data: updatedData, error: updateError } = await supabaseClient
+         .from('users')
+         .update({ 
+           risk_profile: profile,
+           updated_at: new Date().toISOString()
+         })
+         .eq('id', user.uid)
+         .select();
 
-  //     if (updateError) {
-  //       console.error('Erro ao atualizar perfil:', updateError);
-  //       throw updateError;
-  //     }
+       if (updateError) {
+         console.error('Erro ao atualizar perfil:', updateError);
+         throw updateError;
+       }
 
-  //     // Mostra o resultado imediatamente
-  //     setResult(profile);
-  //     setHasProfile(true);
+  //      Mostra o resultado imediatamente
+       setResult(profile);
+       setHasProfile(true);
 
-  //     // Atualiza o contexto do usuário em background (não-bloqueante)
-  //     refreshUser().catch((error) => {
-  //       console.error('Erro ao atualizar contexto:', error);
-  //     });
+  //      Atualiza o contexto do usuário em background (não-bloqueante)
+       refreshUser().catch((error) => {
+         console.error('Erro ao atualizar contexto:', error);
+       });
 
-  //   } catch (error: any) {
-  //     console.error('Erro ao salvar perfil:', error);
+     } catch (error: any) {
+       console.error('Erro ao salvar perfil:', error);
       
-  //     // Mensagens de erro mais específicas
-  //     let errorMessage = 'Erro ao salvar perfil. ';
-  //     if (error.message?.includes('não encontrado')) {
-  //       errorMessage += 'Usuário não encontrado. Faça logout e login novamente.';
-  //     } else {
-  //       errorMessage += error.message || 'Tente novamente em alguns instantes.';
-  //     }
+  //      Mensagens de erro mais específicas
+       let errorMessage = 'Erro ao salvar perfil. ';
+       if (error.message?.includes('não encontrado')) {
+         errorMessage += 'Usuário não encontrado. Faça logout e login novamente.';
+       } else {
+         errorMessage += error.message || 'Tente novamente em alguns instantes.';
+       }
       
-  //     alert(errorMessage);
+       alert(errorMessage);
       
-  //     // Reset em caso de erro
-  //     setResult(null);
-  //     setHasProfile(false);
-  //   } finally {
-  //     // SEMPRE desativa o loading, independente de sucesso ou erro
-  //     setSaving(false);
-  //   }
-  // };
+  //      Reset em caso de erro
+       setResult(null);
+       setHasProfile(false);
+     } finally {
+  //      SEMPRE desativa o loading, independente de sucesso ou erro
+       setSaving(false);
+     }
+   };
 
   const resetQuiz = () => {
     setCurrentQuestion(0);
