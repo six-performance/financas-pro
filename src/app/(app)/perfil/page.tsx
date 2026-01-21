@@ -264,7 +264,7 @@ export default function PerfilPage() {
               {/* Barra de Progresso */}
               <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
-                  className="bg-gradient-to-r from-brand-orange to-brand-red h-2 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-[#ff6b2d] to-[#b91c1c] h-2 rounded-full transition-all duration-300"
                   style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
                 />
               </div>
@@ -280,7 +280,7 @@ export default function PerfilPage() {
                       key={index}
                       variant="outline"
                       onClick={() => handleAnswer(option.score)}
-                      className="w-full justify-start text-left h-auto py-4 px-6 hover:border-brand-orange hover:bg-orange-50"
+                      className="w-full justify-start text-left h-auto py-4 px-6 hover:border-brand-orange hover:bg-gradient-to-r from-[#ff6b2d] to-[#b91c1c]"
                     >
                       <span className="flex-1">{option.text}</span>
                     </Button>

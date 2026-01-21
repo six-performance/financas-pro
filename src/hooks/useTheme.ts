@@ -5,15 +5,13 @@ import { useEffect, useState } from 'react';
 type Theme = 'light' | 'dark';
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Verifica se há tema salvo no localStorage
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     
-    // Se não houver tema salvo, verifica a preferência do sistema
     if (!savedTheme) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const initialTheme = prefersDark ? 'dark' : 'light';
