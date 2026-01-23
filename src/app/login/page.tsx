@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert } from '@/components/ui/alert';
-import { LogIn, Mail, Lock, AlertCircle, TrendingUp, Shield, Zap, Eye, EyeOff, KeyRound, ArrowRight } from 'lucide-react';
+import { LogIn, Mail, Lock, AlertCircle, TrendingUp, Zap, Eye, EyeOff, KeyRound, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { Loading } from '@/components/ui/loading';
 
@@ -97,8 +97,6 @@ export default function LoginPage() {
       <div className="grid min-h-screen lg:grid-cols-2">
         <div className="relative hidden lg:flex items-center justify-center bg-[#121212] p-12 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            {/* <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-[#ff6b2d]/10 blur-[120px]" /> */}
-            {/* <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-[#ff6b2d]/10 blur-[120px]" /> */}
           </div>
 
           <div className="relative z-10 max-w-xl space-y-8">
@@ -199,8 +197,8 @@ export default function LoginPage() {
             {error && (
               <Alert variant="destructive" className="border-red-500/20 bg-red-500/10 text-red-200">
                 <div className="flex items-center gap-2">
-                  <AlertCircle className="h-4 w-4" />
-                  <span className="text-sm">{error}</span>
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm flex-1 whitespace-nowrap">{error}</span>
                 </div>
               </Alert>
             )}
@@ -208,8 +206,8 @@ export default function LoginPage() {
             {success && (
               <Alert variant="success" className="border-green-500/20 bg-green-500/10 text-green-200">
                 <div className="flex items-center gap-2">
-                  <KeyRound className="h-4 w-4" />
-                  <span className="text-sm">{success}</span>
+                  <KeyRound className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm flex-1 whitespace-nowrap">{success}</span>
                 </div>
               </Alert>
             )}
