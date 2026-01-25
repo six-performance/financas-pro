@@ -242,9 +242,9 @@ export default function PlansPage() {
           </Card>
 
           {/* Plano PRO */}
-          <Card className="flex flex-col border-2 border-brand-orange relative bg-gradient-to-br from-orange-50/50 to-red-50/30">
+          <Card className="flex flex-col text-black border-2 border-brand-orange relative bg-green-100">
             <div className="absolute -top-3 right-6">
-              <Badge className="bg-brand-orange hover:bg-brand-red">
+              <Badge className="bg-green-500 hover:bg-brand-red">
                 RECOMENDADO
               </Badge>
             </div>
@@ -275,7 +275,7 @@ export default function PlansPage() {
 
               <Button
                 size="lg"
-                className="w-full bg-gradient-to-r from-brand-orange to-brand-red hover:from-brand-orange/90 hover:to-brand-red/90"
+                className="w-full bg-gradient-to-r from-brand-orange to-brand-red text-black border border-[var(--border)] shadow-sm hover:shadow-x1 hover:scale-[1.10] active:scale-[0.98] transition-all duration-200"
                 disabled={isPaidUser || checkoutLoading}
                 onClick={handleSubscribe}
               >

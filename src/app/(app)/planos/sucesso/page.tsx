@@ -88,7 +88,7 @@ function SuccessContent() {
 
   return (
     <div className="flex items-center justify-center min-h-[60vh]">
-      <Card className="max-w-2xl w-full border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+      <Card className="max-w-2xl w-full border-2 border-green-200 bg-gradient-to-br from-green-100 to-emerald-100">
         <CardContent className="p-12 text-center space-y-6">
           {/* Ícone de Sucesso */}
           <div className="flex justify-center">
@@ -99,7 +99,7 @@ function SuccessContent() {
 
             {/* Título */}
             <div>
-              <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2 flex items-center justify-center gap-2">
+              <h1 className="text-3xl font-bold text-black mb-2 flex items-center justify-center gap-2">
                 Pagamento Confirmado!
                 <Sparkles className="w-8 h-8 text-orange-500" />
               </h1>
@@ -110,7 +110,7 @@ function SuccessContent() {
 
             {/* Descrição */}
             <div className="space-y-3 text-left bg-white p-6 rounded-lg">
-              <p className="text-slate-700">
+              <p className="text-slate-900">
                 <strong>Parabéns!</strong> Agora você tem acesso a todos os recursos premium:
               </p>
               <ul className="space-y-2 text-sm text-[var(--muted-foreground)]">
@@ -144,8 +144,7 @@ function SuccessContent() {
                 // Forçar refresh do contexto de autenticação
                 window.location.href = '/dashboard';
               }}
-              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600"
-            >
+              className="w-full text-black bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600">
               Ir para Dashboard
             </Button>
         </CardContent>
