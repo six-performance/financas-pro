@@ -73,7 +73,7 @@ export default function MarketNews() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-4 rounded-lg hover:bg-orange-50/50 transition-colors border border-slate-200 hover:border-brand-orange group"
+                  className="block p-4 rounded-lg transition-colors border border-slate-200 hover:border-brand-orange hover:bg-gradient-to-r from-[#ff6b2d] to-[#b91c1c]"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1">

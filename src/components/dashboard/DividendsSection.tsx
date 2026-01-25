@@ -95,7 +95,7 @@ export function DividendsSection({ assets, loading, error }: DividendsSectionPro
             <AlertDescription className="text-[var(--foreground)]">
               <div className="space-y-2">
                 <p className="font-semibold">Seus Ativos que Pagam Dividendos</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                   {assets.map((asset, index) => (
                     <div key={index} className="bg-[var(--card)] p-3 rounded-lg border border-[var(--border)] space-y-2">
                       <div className="flex items-center justify-between">

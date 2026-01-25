@@ -245,7 +245,7 @@ export default function PerfilPage() {
           <Alert className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
             <CheckCircle2 className="h-4 w-4 text-green-600" />
             <AlertDescription className="text-green-800">
-              Você possui um perfil definido: <strong>{profileInfo[result].title}</strong>. 
+              Você possui um perfil definido: <strong>{profileInfo[result].title}</strong> 
               Seu perfil foi salvo e suas recomendações estão abaixo.
             </AlertDescription>
           </Alert>
