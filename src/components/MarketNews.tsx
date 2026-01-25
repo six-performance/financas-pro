@@ -77,14 +77,14 @@ export default function MarketNews() {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1">
-                      <h4 className="font-semibold text-slate-900 group-hover:text-brand-orange mb-2 line-clamp-2">
+                      <h4 className="font-semibold text-[var(--foreground)] group-hover:text-brand-orange mb-2 line-clamp-2">
                         {item.title}
                       </h4>
                       <div className="flex flex-wrap gap-3 text-sm">
-                        <Badge variant="secondary" className="bg-orange-100 text-brand-red border-orange-200">
+                        <Badge variant="secondary" className="bg-orange-500 text-brand-red border-orange-200">
                           {item.source}
                         </Badge>
-                        <span className="text-slate-500 flex items-center gap-1">
+                        <span className="text-brand-red flex items-center gap-1">
                           {new Date(item.pubDate).toLocaleDateString('pt-BR', {
                             day: '2-digit',
                             month: 'short',
