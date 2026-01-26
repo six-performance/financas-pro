@@ -45,7 +45,7 @@ export function PortfolioSummaryComponent({ summary, investments }: PortfolioSum
   return (
     <>
       {/* Cards de Resumo */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* Valor Total */}
         <Card className="!bg-gradient-to-br !from-[#ff6b2d] !to-[#b91c1c] text-white border-0 hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
@@ -62,7 +62,7 @@ export function PortfolioSummaryComponent({ summary, investments }: PortfolioSum
         </Card>
 
         {/* Total Investido */}
-        <Card className="!bg-gradient-to-br !from-[#b91c1c] !to-red-800 text-white border-0 hover:shadow-lg transition-shadow">
+        <Card className="!bg-gradient-to-br !from-orange-400 !to-red-600 text-white border-0 hover:shadow-lg transition-shadow">
           <CardContent className="p-6">
             <div className="flex justify-between items-start mb-4">
               <div>
@@ -82,7 +82,7 @@ export function PortfolioSummaryComponent({ summary, investments }: PortfolioSum
             "text-white border-0 hover:shadow-lg transition-shadow",
             summary.lucroOuPrejuizo >= 0
               ? "!bg-gradient-to-br !from-[#10b981] !to-green-700"
-              : "!bg-gradient-to-br !from-orange-400 !to-red-600"
+              : "!bg-gradient-to-br !from-[#b91c1c] !to-red-800"
           )}
         >
           <CardContent className="p-6">
@@ -159,14 +159,14 @@ export function PortfolioSummaryComponent({ summary, investments }: PortfolioSum
           {/* Investimentos Recentes */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl">Investimentos Recentes</CardTitle>
+              <CardTitle className="text-xl">Investimentos realizados</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
-                {investments.slice(0, 5).map((inv) => (
+              <div className="custom-scroll max-h-[320px] overflow-y-auto space-y-2 pr-2">
+                {investments.map((inv) => (
                   <div
                     key={inv.id}
-                    className="flex justify-between items-center p-3 rounded-lg hover:bg-[var(--secondary)] transition-colors"
+                    className="flex justify-between items-center p-3 rounded-lg hover:bg-[var(--secondary)] transition-all hover:shadow-sm hover:-translate-y-[1px]"
                   >
                     <div>
                       <p className="font-semibold text-[var(--foreground)]">{inv.ticker}</p>

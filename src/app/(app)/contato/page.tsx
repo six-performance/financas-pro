@@ -212,13 +212,13 @@ export default function ContactPage() {
                     <Label className="text-base font-semibold mb-3 block">
                       Selecione a Data
                     </Label>
-                    <div className="border rounded-lg p-4">
+                    <div className="bg-[var(--card)] border border-[var(--border)] rounded-lg p-4 shadow-sm flex justify-center">
                       <Calendar
                         onChange={setSelectedDate}
                         value={selectedDate}
                         minDate={new Date()}
                         locale="pt-BR"
-                        className="w-full border-0"
+                        className="w-full border-0 bg-transparent text-black"
                       />
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function ContactPage() {
                       </SelectTrigger>
                       <SelectContent>
                         {AVAILABLE_TIMES.map((time) => (
-                          <SelectItem key={time} value={time} className="text-base">
+                          <SelectItem key={time} value={time} className="bg-[var(--card)] hover:border-brand-orange hover:bg-gradient-to-r from-[#ff6b2d] to-[#b91c1c]">
                             🕐 {time}
                           </SelectItem>
                         ))}
