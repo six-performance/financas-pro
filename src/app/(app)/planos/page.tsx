@@ -148,10 +148,10 @@ export default function PlansPage() {
               </div>
               
               <div>
-                <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2 flex items-center justify-center gap-2">
-                  <Sparkles className="w-6 h-6 text-brand-orange" />
+                <h2 className="text-2xl font-bold text-green-600 mb-2 flex items-center justify-center gap-2">
+                  <Sparkles className="w-6 h-6 text-green-600" />
                   Você é PRO!
-                  <Sparkles className="w-6 h-6 text-brand-orange" />
+                  <Sparkles className="w-6 h-6 text-green-600" />
                 </h2>
                 <p className="text-lg text-slate-700 mb-4">
                   Sua assinatura está <strong className="text-green-600">ativa</strong> e você tem acesso a todos os recursos premium.
@@ -179,7 +179,7 @@ export default function PlansPage() {
               <Button
                 size="lg"
                 onClick={() => router.push('/dashboard')}
-                className="w-full max-w-md mx-auto bg-gradient-to-r from-brand-orange to-brand-red hover:from-brand-orange/90 hover:to-brand-red/90"
+                className="w-full max-w-md mx-auto bg-gradient-to-r from-[#ff6b2d] to-[#b91c1c] hover:from-brand-orange/90 hover:to-brand-red/90"
               >
                 Ir para Dashboard
               </Button>
