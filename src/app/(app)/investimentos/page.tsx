@@ -288,8 +288,7 @@ export default function InvestmentPage() {
                   
                   <TabsTrigger 
                     value="rendaFixa"
-                    className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md"
-                  >
+                    className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md">
                     🏦 Renda Fixa
                   </TabsTrigger>
                   
@@ -297,8 +296,7 @@ export default function InvestmentPage() {
                   {getEffectiveProfile(user?.riskProfile as RiskProfile | null) !== 'conservador' && (
                     <TabsTrigger 
                       value="fundo"
-                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md"
-                    >
+                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md">
                       📈 Fundos
                     </TabsTrigger>
                   )}
@@ -307,8 +305,7 @@ export default function InvestmentPage() {
                   {getEffectiveProfile(user?.riskProfile as RiskProfile | null) !== 'conservador' && (
                     <TabsTrigger 
                       value="acao"
-                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md"
-                    >
+                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md">
                       📊 Ações
                     </TabsTrigger>
                   )}
@@ -317,8 +314,7 @@ export default function InvestmentPage() {
                   {getEffectiveProfile(user?.riskProfile as RiskProfile | null) === 'arrojado' && (
                     <TabsTrigger 
                       value="cripto"
-                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md"
-                    >
+                      className="text-xs border-0 sm:text-sm py-2 sm:py-2.5 data-[state=active]:!bg-gradient-to-r data-[state=active]:!from-[#ff6b2d] data-[state=active]:!to-[#b91c1c] data-[state=active]:text-white data-[state=active]:shadow-md">
                       ₿ Cripto
                     </TabsTrigger>
                   )}

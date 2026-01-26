@@ -242,10 +242,10 @@ export default function PerfilPage() {
 
         {/* Perfil Atual */}
         {hasProfile && result && (
-          <Alert className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
-            <CheckCircle2 className="h-4 w-4 text-green-600" />
+          <Alert className="bg-gradient-to-r from-green-100 to-emerald-100 border-green-200">
+            <CheckCircle2 className="h-4 w-4 text-green-600 !text-green-600" />
             <AlertDescription className="text-green-800">
-              Você possui um perfil definido: <strong>{profileInfo[result].title}</strong>. 
+              Você possui um perfil definido: <strong>{profileInfo[result].title}</strong> 
               Seu perfil foi salvo e suas recomendações estão abaixo.
             </AlertDescription>
           </Alert>
@@ -313,9 +313,9 @@ export default function PerfilPage() {
               <div className="flex items-center gap-4 mb-4">
                 <div className={cn(
                   "w-16 h-16 rounded-full flex items-center justify-center",
-                  result === 'conservador' ? 'bg-blue-100' :
-                  result === 'moderado' ? 'bg-orange-100' :
-                  'bg-red-100'
+                  result === 'conservador' ? 'bg-blue-200' :
+                  result === 'moderado' ? 'bg-orange-400' :
+                  'bg-red-400'
                 )}>
                   <ProfileIcon className={cn(
                     "w-8 h-8",
@@ -347,7 +347,7 @@ export default function PerfilPage() {
                       className="flex items-center gap-2 p-3 bg-[var(--secondary)] rounded-lg"
                     >
                       <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-slate-700">{rec}</span>
+                      <span className="text-[var(--foreground)]">{rec}</span>
                     </div>
                   ))}
                 </div>
@@ -366,15 +366,15 @@ export default function PerfilPage() {
                 <Button
                   onClick={() => router.push('/investimentos')}
                   size="lg"
-                  className="min-w-[250px] bg-gradient-to-r from-brand-orange to-brand-red"
+                  className="min-w-[250px] bg-gradient-to-r from-brand-orange to-brand-red text-[var(--foreground)] border-2 border-[var(--border)] shadow-sm hover:shadow-x1 hover:scale-[1.04] active:scale-[0.98] transition-all duration-200"
                 >
                   Ver Investimentos Recomendados
                 </Button>
                 <Button
                   onClick={resetQuiz}
-                  variant="outline"
+                  // variant="outline"
                   size="lg"
-                  className="min-w-[250px]"
+                  className="min-w-[250px] bg-gradient-to-r from-brand-orange to-brand-red text-[var(--foreground)] border-2 border-[var(--border)] shadow-sm hover:shadow-x1 hover:scale-[1.04] active:scale-[0.98] transition-all duration-200"
                 >
                   Refazer Questionário
                 </Button>

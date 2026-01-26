@@ -47,7 +47,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
       {/* Mobile Sidebar - usando Sheet do shadcn/ui */}
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-        <SheetContent side="left" className="w-64 p-0" aria-describedby={undefined}>
+        <SheetContent side="left" className="w-64 p-0 [&>button]:hidden" aria-describedby={undefined}>
           <SheetTitle className="sr-only">Menu de navegação</SheetTitle>
           <SidebarNav menuItems={menuItems} onNavigate={() => setSidebarOpen(false)} />
         </SheetContent>
